@@ -16,6 +16,8 @@ public class clsTask
     public int TaskType { get; set; }
     public int SubjectID { get; set; }
 
+    public clsSubject SubjectInfo { get; set;  }
+
     public clsTask()
     {
         this.TaskID = -1;
@@ -34,12 +36,13 @@ public class clsTask
         _Mode = enMode.Update;
         this.TaskID = taskID;
         this.TaskTitle = taskTitle;
-        this.TaskDetails = taskDetails;
+        this.TaskDetails = taskDetails; 
         this.TaskDate = taskDate;
         this.DueDate = dueDate;
         this.Notes = notes;
         this.TaskType = taskType;
         this.SubjectID = subjectID;
+        this.SubjectInfo = clsSubject.FindSubjectBySubjectID(subjectID);
     }
 
     private async Task<bool> _AddNewTaskAsync()
@@ -79,7 +82,7 @@ public class clsTask
         return await clsTaskData.GetAllTasksAsync();
     }
 
-    public static async Task<clsTask> FindTaskByTaskIDAsync(int taskID)
+    public static  clsTask FindTaskByTaskIDAsync(int taskID)
     {
         string taskTitle = "";
         string taskDetails = "";

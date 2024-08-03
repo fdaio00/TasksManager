@@ -38,6 +38,23 @@ namespace TasksManager
         void _ResetDefaultValuse()
         {
             _FillSubjectsComboBox(); 
+            if(_Mode==enMode.AddNew)
+            {
+                this.Text = "اضافة مهمة جديدة";
+                _Task = new clsTask(); 
+
+            }
+            else
+            {
+                this.Text = "تعديل مهمة سابقة";
+
+            }
+
+            txtNotes.Clear();
+            txtTaskDetails.Clear();
+            txtTaskTitle.Clear();
+            rbScientific.Checked = true; 
+            
 
         }
        
@@ -58,7 +75,27 @@ namespace TasksManager
         }
         private void frmAddUpdateTask_Load(object sender, EventArgs e)
         {
-            _FillSubjectsComboBox();
+            _ResetDefaultValuse();
+            if (_Mode == enMode.Update)
+                _LoadTaskInfo();
+        }
+
+        private void _LoadTaskInfo()
+        {
+
+            _Task = clsTask.FindTaskByTaskIDAsync(_TaskID??-1);
+            if(_Task==null )
+            {
+                MessageBox.Show("لم يتم ايجاد المهمة هذه");
+                return; 
+            }
+
+            txtTaskTitle.Text = _Task.TaskTitle; 
+            txtNotes.Text = _Task.Notes; 
+            txtTaskDetails.Text = _Task.TaskDetails;
+            cbSubject.FindString(_Task.SubjectInfo.SubjectName);
+
+            
         }
 
         private void cbSubject_SelectedIndexChanged(object sender, EventArgs e)
@@ -78,7 +115,9 @@ namespace TasksManager
             _Task.DueDate = dtpDueTime.Value;
             _Task.TaskDate = DateTime.Now;
             _Task.TaskDetails = txtTaskDetails.Text.Trim();
-            _Task.Notes = txtNotes.Text.Trim(); 
+            _Task.Notes = txtNotes.Text.Trim();
+            _Task.TaskTitle = txtTaskTitle.Text.Trim(); 
+            _Task.SubjectID = _Subject.SubjectID; 
             if(rbScientific.Checked)
             {
                 _TaskType = enTaskType.Scientific;
@@ -93,8 +132,11 @@ namespace TasksManager
            if(await _Task.SaveAsync())
             {
                 MessageBox.Show("تمت الاضاف بنجاح");
+                this.Text = "تعديل مهمة سابقة";
+                _Mode = enMode.Update;
+                _TaskID = _Task.TaskID; 
             }
-           else
+            else
             {
                 MessageBox.Show(" لم تتم بنجاح");
 

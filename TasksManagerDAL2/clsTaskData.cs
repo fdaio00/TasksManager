@@ -18,11 +18,12 @@ public static class clsTaskData
     public static async Task<DataTable> GetAllTasksAsync()
     {
         DataTable dt = new DataTable();
-
+       
         try
         {
+            string query = "select TaskID,TaskDetails,DueDate,DaysLeft,TaskType,SubjectName from TaskSummary";
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-            using (SQLiteCommand command = new SQLiteCommand("SELECT * FROM Tasks", connection))
+            using (SQLiteCommand command = new SQLiteCommand(query, connection))
             {
                 await connection.OpenAsync();
                 using (var reader = await command.ExecuteReaderAsync())
@@ -48,25 +49,25 @@ public static class clsTaskData
         INSERT INTO Tasks (TaskTitle, TaskDetails, TaskDate, DueDate, Notes, TaskType, SubjectID) 
         VALUES (@TaskTitle, @TaskDetails, @TaskDate, @DueDate, @Notes, @TaskType, @SubjectID); 
         SELECT last_insert_rowid();";
-
         try
         {
             using (var connection = new SQLiteConnection(connectionString))
             using (var command = new SQLiteCommand(query, connection))
             {
-                command.Parameters.AddWithValue("@TaskTitle", taskTitle);
-                command.Parameters.AddWithValue("@TaskDetails", taskDetails);
-                command.Parameters.AddWithValue("@TaskDate", taskDate);
-                command.Parameters.AddWithValue("@DueDate", dueDate);
-                command.Parameters.AddWithValue("@Notes", notes);
-                command.Parameters.AddWithValue("@TaskType", taskType);
-                command.Parameters.AddWithValue("@SubjectID", subjectID);
+                // Use null if the string is empty, otherwise use the actual value
+                command.Parameters.AddWithValue("@TaskTitle",  taskTitle);
+                command.Parameters.AddWithValue("@TaskDetails", string.IsNullOrEmpty(taskDetails) ? (object)DBNull.Value : taskDetails);
+                command.Parameters.AddWithValue("@TaskDate",   (taskDate == null) ? (object)DBNull.Value : taskDate);
+                command.Parameters.AddWithValue("@DueDate", (dueDate == null) ? (object)DBNull.Value : dueDate);
+                command.Parameters.AddWithValue("@Notes", string.IsNullOrEmpty(notes) ? (object)DBNull.Value : notes);
+                command.Parameters.AddWithValue("@TaskType", (taskType<0) ? (object)DBNull.Value : taskType);
+                command.Parameters.AddWithValue("@SubjectID", (subjectID<0) ? (object)DBNull.Value : subjectID);
 
                 await connection.OpenAsync();
                 return Convert.ToInt32(await command.ExecuteScalarAsync());
             }
         }
-        catch (Exception ex)
+        catch(Exception ex)
         {
             clsDataAccessSettings.LogError(ex.Message);
             return -1;

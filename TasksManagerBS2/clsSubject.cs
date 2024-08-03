@@ -63,7 +63,7 @@ public class clsSubject
         return await clsSubjectData.GetAllSubjectsAsync();
     }
 
-    public static  clsSubject FindSubjectBySubjectIDAsync(int subjectID)
+    public static  clsSubject FindSubjectBySubjectID(int subjectID)
     {
         string subjectName = "";
         string teacherName = "";
