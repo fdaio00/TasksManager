@@ -98,6 +98,12 @@
     <Compile Include="frmListTasks.Designer.cs">
       <DependentUpon>frmListTasks.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSummury.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSummury.Designer.cs">
+      <DependentUpon>frmSummury.cs</DependentUpon>
+    </Compile>
     <Compile Include="myToast.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListTasks.resx">
       <DependentUpon>frmListTasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSummury.resx">
+      <DependentUpon>frmSummury.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="myToast.resx">
       <DependentUpon>myToast.cs</DependentUpon>

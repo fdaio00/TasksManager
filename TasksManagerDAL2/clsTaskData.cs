@@ -21,7 +21,8 @@ public static class clsTaskData
        
         try
         {
-            string query = "select TaskID,TaskDetails,DueDate,DaysLeft,TaskType,SubjectName from TaskSummary";
+            string query = "select TaskID,TaskDetails,DueDate,DaysLeft,TaskType,SubjectName from TaskSummary" +
+                " order by DaysLeft desc";
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             using (SQLiteCommand command = new SQLiteCommand(query, connection))
             {

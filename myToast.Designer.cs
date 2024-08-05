@@ -80,7 +80,7 @@
             // 
             // pbIcon
             // 
-            this.pbIcon.Image = global::AccountingPR.Properties.Resources._1488160809;
+            this.pbIcon.Image = global::TasksManager.Properties.Resources._1488160809;
             this.pbIcon.Location = new System.Drawing.Point(238, 11);
             this.pbIcon.Name = "pbIcon";
             this.pbIcon.Size = new System.Drawing.Size(34, 36);

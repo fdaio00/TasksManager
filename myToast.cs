@@ -1,7 +1,8 @@
-﻿using AccountingPR.Properties;
+﻿using AccountingPR;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using TasksManager.Properties;
 
 namespace AccountingPR
 {
@@ -86,7 +87,7 @@ namespace AccountingPR
         {
             toastY -= 4;
             this.Location = new Point(toastX, toastY);
-            if (toastY <= 870)
+            if (toastY <= 700)
             {
                 toastTimer.Stop();
                 toastHide.Start();
