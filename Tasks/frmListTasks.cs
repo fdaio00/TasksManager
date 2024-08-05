@@ -345,15 +345,25 @@ namespace TasksManager
 
         private void rbIncompelete_CheckedChanged(object sender, EventArgs e)
         {
-            if(dgvListTasks.Rows.Count>0)
+            try
             {
-                _dtTasks.DefaultView.RowFilter = "";
 
 
-                _dtTasks.DefaultView.RowFilter = "DaysLeft > 0 OR DaysLeft IS NULL";
+                if (dgvListTasks.Rows.Count > 0)
+                {
+                    _dtTasks.DefaultView.RowFilter = "";
+
+
+                    _dtTasks.DefaultView.RowFilter = "DaysLeft > 0 OR DaysLeft IS NULL";
+
+                }
+            }
+            catch(Exception ex)
+            {
 
             }
         }
+
 
         private void rbAll_CheckedChanged(object sender, EventArgs e)
         {

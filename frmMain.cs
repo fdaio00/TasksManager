@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TasksManager.Subjects;
 
 namespace TasksManager
 {
@@ -58,7 +59,8 @@ namespace TasksManager
 
         private void btnSubjects_Click(object sender, EventArgs e)
         {
-
+            frmListSubjects frm = new frmListSubjects();
+            _OpenForm(frm);
         }
     }
 }

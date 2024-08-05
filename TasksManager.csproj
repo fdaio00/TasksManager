@@ -86,22 +86,28 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAddUpdateTask.cs">
+    <Compile Include="Subjects\frmListSubjects.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddUpdateTask.Designer.cs">
+    <Compile Include="Subjects\frmListSubjects.Designer.cs">
+      <DependentUpon>frmListSubjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\frmAddUpdateTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks\frmAddUpdateTask.Designer.cs">
       <DependentUpon>frmAddUpdateTask.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListTasks.cs">
+    <Compile Include="Tasks\frmListTasks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListTasks.Designer.cs">
+    <Compile Include="Tasks\frmListTasks.Designer.cs">
       <DependentUpon>frmListTasks.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSummury.cs">
+    <Compile Include="Tasks\frmSummury.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSummury.Designer.cs">
+    <Compile Include="Tasks\frmSummury.Designer.cs">
       <DependentUpon>frmSummury.cs</DependentUpon>
     </Compile>
     <Compile Include="myToast.cs">
@@ -118,13 +124,16 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAddUpdateTask.resx">
+    <EmbeddedResource Include="Subjects\frmListSubjects.resx">
+      <DependentUpon>frmListSubjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks\frmAddUpdateTask.resx">
       <DependentUpon>frmAddUpdateTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListTasks.resx">
+    <EmbeddedResource Include="Tasks\frmListTasks.resx">
       <DependentUpon>frmListTasks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSummury.resx">
+    <EmbeddedResource Include="Tasks\frmSummury.resx">
       <DependentUpon>frmSummury.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="myToast.resx">
@@ -204,5 +213,6 @@
       <Name>TasksManagerBS2</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
