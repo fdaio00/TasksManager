@@ -55,5 +55,10 @@ namespace TasksManager
             frmListTasks frm = new frmListTasks();
             _OpenForm(frm);
         }
+
+        private void btnSubjects_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

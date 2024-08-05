@@ -51,7 +51,7 @@ namespace TasksManager
             txtTaskTitle.Clear();
             rbScientific.Checked = true;
             dtpDueTime.Value = DateTime.Now;
-            
+            ckbNotes.Checked = false; 
 
 
         }
@@ -380,6 +380,14 @@ namespace TasksManager
                         myToast.ShowToast("فشلت المهمة", ToastTypeIcon.Error);
 
                 }
+            }
+        }
+
+        private void ckbNotes_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ckbNotes.Checked)
+            {
+                txtNotes.Enabled = true; 
             }
         }
     }

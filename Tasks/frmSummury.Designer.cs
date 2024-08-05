@@ -41,9 +41,9 @@
             this.txtSummury.Location = new System.Drawing.Point(10, 12);
             this.txtSummury.Multiline = true;
             this.txtSummury.Name = "txtSummury";
+            this.txtSummury.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtSummury.Size = new System.Drawing.Size(355, 315);
             this.txtSummury.TabIndex = 0;
-            this.txtSummury.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // button1
             // 

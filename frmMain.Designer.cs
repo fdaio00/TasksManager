@@ -35,10 +35,10 @@
             this.tcTasksManager = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
             this.btnCurrentTasks = new System.Windows.Forms.RibbonButton();
-            this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
-            this.btnPreviousTasks = new System.Windows.Forms.RibbonButton();
             this.tcSubjectsManager = new System.Windows.Forms.RibbonTab();
             this.tbForms = new MdiTabControl.TabControl();
+            this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
+            this.btnSubjects = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
             // ribbon1
@@ -97,7 +97,6 @@
             // 
             this.tcTasksManager.Name = "tcTasksManager";
             this.tcTasksManager.Panels.Add(this.ribbonPanel1);
-            this.tcTasksManager.Panels.Add(this.ribbonPanel2);
             this.tcTasksManager.Text = "إدارة المهام";
             // 
             // ribbonPanel1
@@ -118,26 +117,10 @@
             this.btnCurrentTasks.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Right;
             this.btnCurrentTasks.Click += new System.EventHandler(this.btnCurrentTasks_Click);
             // 
-            // ribbonPanel2
-            // 
-            this.ribbonPanel2.ButtonMoreEnabled = false;
-            this.ribbonPanel2.ButtonMoreVisible = false;
-            this.ribbonPanel2.Items.Add(this.btnPreviousTasks);
-            this.ribbonPanel2.Name = "ribbonPanel2";
-            this.ribbonPanel2.Text = "";
-            // 
-            // btnPreviousTasks
-            // 
-            this.btnPreviousTasks.Image = ((System.Drawing.Image)(resources.GetObject("btnPreviousTasks.Image")));
-            this.btnPreviousTasks.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPreviousTasks.LargeImage")));
-            this.btnPreviousTasks.MinimumSize = new System.Drawing.Size(120, 0);
-            this.btnPreviousTasks.Name = "btnPreviousTasks";
-            this.btnPreviousTasks.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnPreviousTasks.SmallImage")));
-            this.btnPreviousTasks.Text = "مهام فائتة";
-            // 
             // tcSubjectsManager
             // 
             this.tcSubjectsManager.Name = "tcSubjectsManager";
+            this.tcSubjectsManager.Panels.Add(this.ribbonPanel3);
             this.tcSubjectsManager.Text = "إدارة المواد";
             // 
             // tbForms
@@ -153,6 +136,24 @@
             this.tbForms.TabCloseButtonImageHot = null;
             this.tbForms.TabIndex = 1;
             this.tbForms.TabsDirection = MdiTabControl.TabControl.FlowDirection.RightToLeft;
+            // 
+            // ribbonPanel3
+            // 
+            this.ribbonPanel3.ButtonMoreEnabled = false;
+            this.ribbonPanel3.ButtonMoreVisible = false;
+            this.ribbonPanel3.Items.Add(this.btnSubjects);
+            this.ribbonPanel3.Name = "ribbonPanel3";
+            this.ribbonPanel3.Text = "";
+            // 
+            // btnSubjects
+            // 
+            this.btnSubjects.Image = ((System.Drawing.Image)(resources.GetObject("btnSubjects.Image")));
+            this.btnSubjects.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSubjects.LargeImage")));
+            this.btnSubjects.MinimumSize = new System.Drawing.Size(120, 0);
+            this.btnSubjects.Name = "btnSubjects";
+            this.btnSubjects.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnSubjects.SmallImage")));
+            this.btnSubjects.Text = "إدارة المواد ";
+            this.btnSubjects.Click += new System.EventHandler(this.btnSubjects_Click);
             // 
             // frmMain
             // 
@@ -182,8 +183,9 @@
         private System.Windows.Forms.RibbonPanel ribbonPanel1;
         private System.Windows.Forms.RibbonButton btnCurrentTasks;
         private System.Windows.Forms.RibbonPanel ribbonPanel2;
-        private System.Windows.Forms.RibbonButton btnPreviousTasks;
         private System.Windows.Forms.RibbonTab tcSubjectsManager;
         private MdiTabControl.TabControl tbForms;
+        private System.Windows.Forms.RibbonPanel ribbonPanel3;
+        private System.Windows.Forms.RibbonButton btnSubjects;
     }
 }
