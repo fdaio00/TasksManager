@@ -1,6 +1,6 @@
 ﻿namespace TasksManager
 {
-    partial class Form2
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
             this.tcTasksManager = new System.Windows.Forms.RibbonTab();

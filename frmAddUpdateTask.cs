@@ -142,5 +142,10 @@ namespace TasksManager
 
             }
         }
+
+        private void txtTeacher_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

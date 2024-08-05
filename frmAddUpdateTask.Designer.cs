@@ -41,8 +41,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancle = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbTheory = new System.Windows.Forms.RadioButton();
             this.rbScientific = new System.Windows.Forms.RadioButton();
+            this.rbTheory = new System.Windows.Forms.RadioButton();
             this.txtTeacher = new System.Windows.Forms.TextBox();
             this.cbSubject = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
@@ -166,17 +166,6 @@
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             // 
-            // rbTheory
-            // 
-            this.rbTheory.AutoSize = true;
-            this.rbTheory.Location = new System.Drawing.Point(179, 25);
-            this.rbTheory.Name = "rbTheory";
-            this.rbTheory.Size = new System.Drawing.Size(63, 22);
-            this.rbTheory.TabIndex = 16;
-            this.rbTheory.TabStop = true;
-            this.rbTheory.Text = "نظري";
-            this.rbTheory.UseVisualStyleBackColor = true;
-            // 
             // rbScientific
             // 
             this.rbScientific.AutoSize = true;
@@ -188,6 +177,17 @@
             this.rbScientific.Text = "علمي";
             this.rbScientific.UseVisualStyleBackColor = true;
             // 
+            // rbTheory
+            // 
+            this.rbTheory.AutoSize = true;
+            this.rbTheory.Location = new System.Drawing.Point(179, 25);
+            this.rbTheory.Name = "rbTheory";
+            this.rbTheory.Size = new System.Drawing.Size(63, 22);
+            this.rbTheory.TabIndex = 16;
+            this.rbTheory.TabStop = true;
+            this.rbTheory.Text = "نظري";
+            this.rbTheory.UseVisualStyleBackColor = true;
+            // 
             // txtTeacher
             // 
             this.txtTeacher.Location = new System.Drawing.Point(339, 102);
@@ -195,6 +195,7 @@
             this.txtTeacher.ReadOnly = true;
             this.txtTeacher.Size = new System.Drawing.Size(261, 26);
             this.txtTeacher.TabIndex = 5;
+            this.txtTeacher.TextChanged += new System.EventHandler(this.txtTeacher_TextChanged);
             // 
             // cbSubject
             // 
