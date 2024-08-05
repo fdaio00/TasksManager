@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,8 +19,8 @@ namespace TasksManager
             InitializeComponent();
         }
         DataTable _dtTasks;
-        StringBuilder _sbAllInfo = new StringBuilder();
-        
+        StringBuilder _sbSummury = new StringBuilder();
+        string st; 
         DataTable _dtSubjects;
         clsSubject _Subject;
         clsTask _Task;
@@ -63,7 +64,7 @@ namespace TasksManager
                 myToast.ShowToast("لم يتم ايجاد المهمة هذه");
                 return;
             }
-
+            _Mode = enMode.Update; 
             txtTaskTitle.Text = _Task.TaskTitle;
             txtNotes.Text = _Task.Notes;
             txtTaskDetails.Text = _Task.TaskDetails;
@@ -71,29 +72,137 @@ namespace TasksManager
             _EnableDisableTextBoxes(true);
             txtTaskDetails.Focus();
             btnSave.Enabled = true; 
-            btnDelete.Enabled = true; 
+            btnDelete.Enabled = true;
+            dtpDueTime.Value = _Task.DueDate; 
+            _TaskID = _Task.TaskID; 
 
 
         }
 
         void _GatherAllInformation()
         {
-            _sbAllInfo.Clear();
-            _sbAllInfo.AppendLine($"{txtTaskTitle.Text.Trim()}");
-            _sbAllInfo.AppendLine($"*Subject*: {cbSubject.Text}");
+            string IsEdit = "";
+            if (_Mode == enMode.Update)
+            {
+                IsEdit = "*(تعديل)*";
+            }
+            string Note = "";
+            if (ckbNotes.Checked)
+            {
+                Note += "*ملاحظة*\n";
+                Note += $"{txtNotes.Text}";
+                            
+     
+            }
+            else
+            {
+                Note = "";
+            }
 
-            _sbAllInfo.AppendFormat("المادة : {0}\n", cbSubject.Text.Trim());
-            _sbAllInfo.AppendLine($"مدرس المادة {txtTeacher.Text}");
-            _sbAllInfo.AppendLine($"");
-            _sbAllInfo.AppendLine($"");
-            _sbAllInfo.AppendLine($"");
-            _sbAllInfo.AppendLine($"");
-            _sbAllInfo.AppendLine($"");
+
+            string Type = "";
+            if (_TaskType == enTaskType.Theory)
+            {
+                Type = "نظري";
+            }
+            else
+            {
+                Type = "عملي";
+            }
+
+
+            //            st = "";
+            //            st += $@"
+            //                {IsEdit}
+
+            //                {txtTaskTitle.Text}
+
+            //                *المادة*
+            //                {cbSubject.Text}
+
+            //                *مدرس المادة*
+            //                {txtTeacher.Text}
+
+            //                *نوع التكليف*
+            //                {Type}
+
+            //                *نص التكليف*
+            //                {txtTaskDetails.Text}
+
+            //                *تاريخ التسليم*
+            //                {dtpDueTime.Value.ToShortDateString()}
+
+            //                {Note}
+
+
+
+
+
+
+            //            //    ";
+            //_sbAllInfo.AppendLine($"*{txtTaskTitle.Text}*");
+            //_sbAllInfo.AppendLine();
+            ////_sbAllInfo.AppendLine($"*Subject*: {cbSubject.Text}");
+            //_sbAllInfo.AppendLine("*المادة*");
+            //_sbAllInfo.AppendLine(cbSubject.Text);
+            //_sbAllInfo.AppendLine();
+
+            //_sbAllInfo.AppendLine($"*مدرس المادة*");
+
+            //_sbAllInfo.AppendLine(txtTeacher.Text);
+            //_sbAllInfo.AppendLine();
+
+            //_sbAllInfo.AppendLine("*نص التكليف*");
+            //_sbAllInfo.AppendLine(txtTaskDetails.Text);
+            //_sbAllInfo.AppendLine();
+
+            //_sbAllInfo.AppendLine("*موعد التسليم*");
+            //_sbAllInfo.AppendLine(dtpDueTime.Value.ToString("yyyy-MM-dd"));
+            //if(ckbNotes.Checked)
+            //{
+            //_sbAllInfo.AppendLine();
+            //    _sbAllInfo.AppendLine("*ملاحظة: *");
+            //    _sbAllInfo.AppendLine(txtNotes.Text);
+            //}
+
+
+            _sbSummury.Clear();
+         if(!string.IsNullOrEmpty(IsEdit))
+            {
+                _sbSummury.AppendLine($"*!!!{IsEdit}!!!*");
+                _sbSummury.AppendLine();
+            }
+            _sbSummury.AppendLine($"*{txtTaskTitle.Text}*");
+            _sbSummury.AppendLine();
+            //_sbAllInfo.AppendLine($"*Subject*: {cbSubject.Text}");
+            _sbSummury.AppendLine("*المادة*");
+            _sbSummury.AppendLine(cbSubject.Text);
+            _sbSummury.AppendLine();
+
+            _sbSummury.AppendLine($"*مدرس المادة*");
+
+            _sbSummury.AppendLine(txtTeacher.Text);
+            _sbSummury.AppendLine();
+              _sbSummury.AppendLine($"*نوع التكليف*");
+
+            _sbSummury.AppendLine(Type);
+            _sbSummury.AppendLine();
+
+            _sbSummury.AppendLine("*نص التكليف*");
+            _sbSummury.AppendLine(txtTaskDetails.Text);
+            _sbSummury.AppendLine();
+
+            _sbSummury.AppendLine("*موعد التسليم*");
+            _sbSummury.AppendLine(dtpDueTime.Value.ToString("yyyy-MM-dd"));
+            if (!string.IsNullOrEmpty(Note))
+            {
+                _sbSummury.AppendLine(Note);
+            }
 
         }
 
 
-       async void _FillDataGridView()
+        async void _FillDataGridView()
         {
             _dtTasks = await clsTask.GetAllTasksAsync();
             if (_dtTasks.Rows.Count > 0)
@@ -160,7 +269,13 @@ namespace TasksManager
                 _TaskID = _Task.TaskID;
                 _FillDataGridView();
                 _GatherAllInformation();
-                MessageBox.Show(_sbAllInfo.ToString());
+              //if(  MessageBox.Show("هل تريد طباعة الخلاصة؟","طباعة الخلاصة",MessageBoxButtons.OKCancel) ==DialogResult.OK)
+              //  {
+                frmSummury frm = new frmSummury(_sbSummury);
+                frm.Show();
+                _Mode = enMode.Update;
+
+                
             }
             else
             {
@@ -175,7 +290,8 @@ namespace TasksManager
             _EnableDisableTextBoxes();
             btnSave.Enabled = true;
             txtTaskTitle.Focus();
-            _Task = new clsTask(); 
+            _Task = new clsTask();
+            _Mode = enMode.AddNew; 
 
         }
 
@@ -243,6 +359,28 @@ namespace TasksManager
         {
             _dtTasks.DefaultView.RowFilter = "";
 
+        }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            if(_TaskID.HasValue)
+            {
+                if(MessageBox.Show("هل انت متاكد من حذف المهمة المحددة؟","حذف",MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation)==DialogResult.OK)
+                {
+                    if(await clsTask.DeleteTaskAsync(_TaskID??-1))
+                    {
+                        myToast.ShowToast("تم الحذف بنجاح",ToastTypeIcon.Success);
+                        _FillDataGridView();
+                        _ResetDefaultValuse();
+                        dgvListTasks.ClearSelection();
+                        btnDelete.Enabled = false; 
+
+                    }
+                    else
+                        myToast.ShowToast("فشلت المهمة", ToastTypeIcon.Error);
+
+                }
+            }
         }
     }
 }
