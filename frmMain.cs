@@ -54,13 +54,21 @@ namespace TasksManager
         private void btnCurrentTasks_Click(object sender, EventArgs e)
         {
             frmListTasks frm = new frmListTasks();
-            _OpenForm(frm);
+
+            frm.ShowDialog();
+            //_OpenForm(frm);
         }
 
         private void btnSubjects_Click(object sender, EventArgs e)
         {
             frmListSubjects frm = new frmListSubjects();
-            _OpenForm(frm);
+            frm.ShowDialog();
+            //_OpenForm(frm);
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

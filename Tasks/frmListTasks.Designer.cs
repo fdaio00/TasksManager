@@ -81,6 +81,7 @@
             this.dgvListTasks.Size = new System.Drawing.Size(728, 195);
             this.dgvListTasks.TabIndex = 0;
             this.dgvListTasks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListTasks_CellClick);
+            this.dgvListTasks.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListTasks_CellDoubleClick);
             this.dgvListTasks.Click += new System.EventHandler(this.dgvListTasks_Click);
             // 
             // ribbonItemGroup1

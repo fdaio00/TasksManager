@@ -7,8 +7,8 @@ namespace TasksManagerDAL2
     public static class clsDataAccessSettings
     {
 
-        //public static string ConnectionString = $"Data Source={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TasksManagerDB.db")}";
-        public static string ConnectionString = @"Data Source=C:\Users\Fedaa\source\repos\TasksManager\TasksManagerDB.db";
+        public static string ConnectionString = $"Data Source={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TasksManagerDB.db")}";
+        //public static string ConnectionString = @"Data Source=C:\Users\Fedaa\source\repos\TasksManager\TasksManagerDB.db";
 
         static public void SetErrorLoggingEvent(string exMessage, string sourceName = "Tasks Manager")
         {

@@ -79,7 +79,7 @@ namespace TasksManager
 
         }
 
-        void _GatherAllInformation()
+        void _GetSummury()
         {
             string IsEdit = "";
             if (_Mode == enMode.Update)
@@ -201,7 +201,6 @@ namespace TasksManager
 
         }
 
-
         async void _FillDataGridView()
         {
             _dtTasks = await clsTask.GetAllTasksAsync();
@@ -268,7 +267,7 @@ namespace TasksManager
                 //_Mode = enMode.Update;
                 _TaskID = _Task.TaskID;
                 _FillDataGridView();
-                _GatherAllInformation();
+                _GetSummury();
               //if(  MessageBox.Show("هل تريد طباعة الخلاصة؟","طباعة الخلاصة",MessageBoxButtons.OKCancel) ==DialogResult.OK)
               //  {
                 frmSummury frm = new frmSummury(_sbSummury);
@@ -399,6 +398,13 @@ namespace TasksManager
             {
                 txtNotes.Enabled = true; 
             }
+        }
+
+        private void dgvListTasks_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _GetSummury();
+            frmSummury frm = new frmSummury(_sbSummury);
+            frm.Show();
         }
     }
 }

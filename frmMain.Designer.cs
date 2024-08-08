@@ -36,9 +36,15 @@
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
             this.btnCurrentTasks = new System.Windows.Forms.RibbonButton();
             this.tcSubjectsManager = new System.Windows.Forms.RibbonTab();
-            this.tbForms = new MdiTabControl.TabControl();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
             this.btnSubjects = new System.Windows.Forms.RibbonButton();
+            this.tbForms = new MdiTabControl.TabControl();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbon1
@@ -123,20 +129,6 @@
             this.tcSubjectsManager.Panels.Add(this.ribbonPanel3);
             this.tcSubjectsManager.Text = "إدارة المواد";
             // 
-            // tbForms
-            // 
-            this.tbForms.BackColor = System.Drawing.SystemColors.Window;
-            this.tbForms.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbForms.Location = new System.Drawing.Point(0, 124);
-            this.tbForms.MenuRenderer = null;
-            this.tbForms.Name = "tbForms";
-            this.tbForms.Size = new System.Drawing.Size(1174, 561);
-            this.tbForms.TabCloseButtonImage = null;
-            this.tbForms.TabCloseButtonImageDisabled = null;
-            this.tbForms.TabCloseButtonImageHot = null;
-            this.tbForms.TabIndex = 1;
-            this.tbForms.TabsDirection = MdiTabControl.TabControl.FlowDirection.RightToLeft;
-            // 
             // ribbonPanel3
             // 
             this.ribbonPanel3.ButtonMoreEnabled = false;
@@ -155,11 +147,65 @@
             this.btnSubjects.Text = "إدارة المواد ";
             this.btnSubjects.Click += new System.EventHandler(this.btnSubjects_Click);
             // 
+            // tbForms
+            // 
+            this.tbForms.BackColor = System.Drawing.SystemColors.Window;
+            this.tbForms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbForms.Location = new System.Drawing.Point(0, 124);
+            this.tbForms.MenuRenderer = null;
+            this.tbForms.Name = "tbForms";
+            this.tbForms.Size = new System.Drawing.Size(1174, 561);
+            this.tbForms.TabCloseButtonImage = null;
+            this.tbForms.TabCloseButtonImageDisabled = null;
+            this.tbForms.TabCloseButtonImageHot = null;
+            this.tbForms.TabIndex = 1;
+            this.tbForms.TabsDirection = MdiTabControl.TabControl.FlowDirection.RightToLeft;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3,
+            this.toolStripStatusLabel4});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 659);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1174, 26);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(62, 20);
+            this.toolStripStatusLabel1.Text = "الاصدار: ";
+            this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(39, 20);
+            this.toolStripStatusLabel2.Text = "1.0.0";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(98, 20);
+            this.toolStripStatusLabel3.Text = "برمجة وتطوير:";
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(237, 20);
+            this.toolStripStatusLabel4.Text = "فداء الدين رعدان - 00967775702698";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1174, 685);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tbForms);
             this.Controls.Add(this.ribbon1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -170,7 +216,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "منظم التكاليف";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -187,5 +236,10 @@
         private MdiTabControl.TabControl tbForms;
         private System.Windows.Forms.RibbonPanel ribbonPanel3;
         private System.Windows.Forms.RibbonButton btnSubjects;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
     }
 }
